@@ -29,6 +29,20 @@ class Index(View):
             form.save()
         return render(request, self.template_name, context)
 
+class Search(View):
+    template_name = 'notes/search.html'
+
+    def get_context_data(self):
+        filterkey = self.request.GET['titlee']
+        context = {
+            'notes': Note.objects.filter(title=filterkey),
+        }
+        return context
+
+    def get(self, request, *args, **kwargs):
+        context = self.get_context_data()
+        return render(request, self.template_name, context)
+
 class Update(View):
     template_name = 'notes/update.html'
 
