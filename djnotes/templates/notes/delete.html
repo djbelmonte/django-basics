@@ -4,21 +4,22 @@
 {% block content %}
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
-        <form action="{% url 'update' note.id %}" method="post">
+        <form action="{% url 'delete' note.id %}" method="post">
             {% csrf_token %}
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <input type="text" class="form-control clear-focus-highlight" name="title" value="{{ note.title }}" placeholder="Enter title...">
+                    <input type="text" class="form-control clear-focus-highlight" name="title" value="{{ note.title }}" 
+                    readonly="readonly" placeholder="Enter title...">
                 </div> 
                 <div class="panel-body">
-                    <textarea class="form-control clear-focus-highlight" name="note" rows="10em" placeholder="Enter note...">
+                    <textarea class="form-control clear-focus-highlight" name="note" rows="10em" readonly="readonly" placeholder="Enter note...">
                         {{ note.note}}
                     </textarea>
                 </div> 
                 <div class="panel-footer">
-                    <input type="submit" class="btn btn-default btn-raised btn-sm" value="Save">
+                    <input type="submit" class="btn btn-default btn-raised btn-sm" value="Delete">
 
-                    <a class="btn btn-danger btn-raised btn-sm" href="{% url 'delete' note.id %}">Delete</a>
+                    <a class="btn btn-danger btn-raised btn-sm" href="{% url 'update' note.id %}">Cancel</a>
                     
                 </div>              
             </div>
