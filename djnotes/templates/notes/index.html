@@ -23,17 +23,19 @@
 {# Display notes #}
 <div class="row">
         {% for note in notes %}
-        <div class="col-md-3">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <strong>{{ note.title }}</strong>
-                </div>
+        <a href="{% url 'update' note.id %}">
+            <div class="col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong>{{ note.title }}</strong>
+                    </div>
 
-                <div class="panel-body">
-                    {{ note.note }}
+                    <div class="panel-body">
+                        {{ note.note }}
+                    </div>
                 </div>
             </div>
-        </div>
+        </a>
         {% endfor %}
     </div>
 </div>
