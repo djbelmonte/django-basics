@@ -24,7 +24,8 @@
 <div class="row">
         {% for note in notes %}
         <a href="{% url 'update' note.id %}">
-            <div class="col-md-3">
+            {% if note.title == 'Jerico' %}
+            <div class="col-md-6" style="clear: both; float: left">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <strong>{{ note.title }}</strong>
@@ -35,6 +36,19 @@
                     </div>
                 </div>
             </div>
+            {% else %}
+            <div class="col-md-6" style="clear: both; float: right">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong>{{ note.title }}</strong>
+                    </div>
+
+                    <div class="panel-body">
+                        {{ note.note }}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
         </a>
         {% endfor %}
     </div>
